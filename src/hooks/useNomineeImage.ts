@@ -42,19 +42,6 @@ function writeToStorage(key: string, url: string | null) {
   }
 }
 
-function getInitialValue(key: string): string | null | undefined {
-  if (memoryCache.has(key)) return memoryCache.get(key) ?? null;
-  const stored = readFromStorage(key);
-
-  if (stored !== undefined) {
-    memoryCache.set(key, stored);
-
-    return stored;
-  }
-
-  return undefined;
-}
-
 /**
  * Retorna a URL da imagem do TMDB para um nominee.
  * - undefined: ainda carregando
@@ -72,9 +59,7 @@ export function useNomineeImage(
 ) {
   const key = tmdbId ? `${tmdbType}:id:${tmdbId}` : `${tmdbType}:${name}`;
 
-  const [imageUrl, setImageUrl] = useState<string | null | undefined>(() =>
-    getInitialValue(key),
-  );
+  const [imageUrl, setImageUrl] = useState<string | null | undefined>(undefined);
 
   useEffect(() => {
     if (memoryCache.has(key)) {
