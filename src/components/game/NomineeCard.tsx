@@ -7,9 +7,10 @@ type NomineeCardProps = {
   isSelected: boolean
   onSelect: () => void
   tmdbType: TmdbType
+  priority?: boolean
 }
 
-export function NomineeCard({ nominee, isSelected, onSelect, tmdbType }: NomineeCardProps) {
+export function NomineeCard({ nominee, isSelected, onSelect, tmdbType, priority }: NomineeCardProps) {
   const imageUrl = useNomineeImage(nominee.name, tmdbType, nominee.tmdbId)
 
   return (
@@ -36,6 +37,7 @@ export function NomineeCard({ nominee, isSelected, onSelect, tmdbType }: Nominee
             fill
             sizes="(max-width: 768px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            priority={priority}
           />
         )}
 
