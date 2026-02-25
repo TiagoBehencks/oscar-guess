@@ -11,7 +11,7 @@ type NomineeCardProps = {
 }
 
 export function NomineeCard({ nominee, isSelected, onSelect, tmdbType, priority }: NomineeCardProps) {
-  const imageUrl = useNomineeImage(nominee.name, tmdbType, nominee.tmdbId)
+  // const imageUrl = useNomineeImage(nominee.name, tmdbType, nominee.tmdbId)
 
   return (
     <button
@@ -28,7 +28,7 @@ export function NomineeCard({ nominee, isSelected, onSelect, tmdbType, priority 
     >
       {/* Imagem / skeleton */}
       <div className="relative w-full aspect-[2/3] overflow-hidden">
-        {imageUrl === undefined && <div className="img-skeleton absolute inset-0" />}
+        {/* {imageUrl === undefined && <div className="img-skeleton absolute inset-0" />}
 
         {imageUrl && (
           <Image
@@ -39,13 +39,13 @@ export function NomineeCard({ nominee, isSelected, onSelect, tmdbType, priority 
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             priority={priority}
           />
-        )}
+        )} */}
 
-        {imageUrl === null && (
+        {/* {imageUrl === null && (
           <div className="absolute inset-0 flex items-center justify-center bg-[rgba(255,255,255,0.018)]">
             <span className="text-[rgba(201,168,76,0.15)] text-[2rem]">✦</span>
           </div>
-        )}
+        )} */}
 
         {/* Overlay de hover */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[rgba(201,168,76,0.07)]" />
